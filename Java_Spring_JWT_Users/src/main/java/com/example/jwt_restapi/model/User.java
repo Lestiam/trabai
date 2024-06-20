@@ -9,7 +9,7 @@ public class User {
     private String id;
     private String username;
     private String password;
-    private String role;
+    private String nivel;
 
     public String getId() {
         return id;
@@ -35,11 +35,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getNivel() {
+        return nivel;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 }

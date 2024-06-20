@@ -19,10 +19,10 @@ public class AuthService {
     @Autowired
     private JwtUtil jwtUtil;
 
-    public String authenticateUser(String username, String password) {
-        User user = userRepository.findByUsername(username);
+    public String authenticateUser(String nome, String password) {
+        User user = userRepository.findByUsername(nome);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return jwtUtil.generateToken(username, user.getRole());
+            return jwtUtil.generateToken(nome, user.getNivel());
         }
         return null;
     }

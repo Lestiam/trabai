@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     .parseClaimsJws(token)
                     .getBody();
             String username = claims.getSubject();
-            String role = claims.get("role", String.class);
+            String role = claims.get("nivel", String.class);
             if (username != null && role != null) {
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority("ROLE_" + role));

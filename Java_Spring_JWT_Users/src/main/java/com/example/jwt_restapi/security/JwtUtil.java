@@ -22,10 +22,10 @@ public class JwtUtil {
 
     private static final long EXPIRATION_TIME = 864_000_000; // 10 days
 
-    public String generateToken(String username, String role) {
+    public String generateToken(String username, String nivel) {
         return Jwts.builder()
                 .setSubject(username)
-                .claim("role", role)
+                .claim("nivel", nivel)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS512)
                 .compact();
@@ -46,6 +46,6 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-        return claims.get("role", String.class);
+        return claims.get("nivel", String.class);
     }
 }

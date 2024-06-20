@@ -25,12 +25,13 @@ public class AppConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/role/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/login.html").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/register.html").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/registrar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/logar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/nivel/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/logar.html").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/registrar.html").permitAll()
                         .requestMatchers(HttpMethod.GET, "/home.html").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/usuario/**").hasRole("ADMIN") // Apenas ADMIN pode deletar usuários
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
